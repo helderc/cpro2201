@@ -1,12 +1,12 @@
 # CPRO 2201 - Python Programming II
 
-Welcome to the **CPRO 2201 — Python Programming II** course repository.
+Welcome to the **CPRO 2201 - Python Programming II** course repository.
 
 This repository contains source code, examples, demonstrations, and other programming materials used throughout the course.
 
 ## 📚 About the Course
 
-**Course:** CPRO 2201 — Python Programming II
+**Course:** CPRO 2201 - Python Programming II
 
 **Program:** Computer Programming
 
