@@ -7,9 +7,13 @@ This repository contains source code, examples, demonstrations, and other progra
 ## 📚 About the Course
 
 **Course:** CPRO 2201 — Python Programming II
+
 **Program:** Computer Programming
+
 **Institution:** Red Deer Polytechnic
+
 **Programming Language:** Python
+
 **Instructor:** Helder Oliveira
 
 This course builds on the programming concepts introduced in Python Programming I and introduces more advanced programming techniques and concepts.
