@@ -1,0 +1,11 @@
+<h1>{{ page_title }}</h1>
+<p>Welcome to the lending system.</p>
+
+<h1>Available equipment</h1>
+<ul>
+{% for item in items %}
+  <li>{{ item.name }}</li>
+{% empty %}
+  <li>No equipment found.</li>
+{% endfor %}
+</ul>

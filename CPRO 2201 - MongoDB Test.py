@@ -1,0 +1,69 @@
+import os
+from pymongo import MongoClient
+from dotenv import load_dotenv
+#import pprint
+#pp = pprint.PrettyPrinter(indent=2, width=100)
+
+
+# reads variables from a .env file and sets them in os.environ
+load_dotenv()  
+
+
+client = MongoClient(os.environ["URI"])
+
+try:
+    client.admin.command("ping")
+    print("Connected successfully")
+    db = client["course_test"] #client["course_demo"]
+    
+    students = db.get_collection("students") # or db["students"]
+    # students.insert_one({"name": "Ava", "program": "Software Dev", "gpa": 3.7})
+
+    students_data = [
+    {"_id": 1, "name": "Ava", "program": "Software Dev", "gpa": 3.7},
+    {"_id": 2, "name": "Liam", "program": "Software Dev", "gpa": 3.2},
+    {"_id": 3, "name": "Olivia", "program": "Computer Programming", "gpa": 3.9},
+    {"_id": 4, "name": "Noah", "program": "Software Dev", "gpa": 2.8},
+    {"_id": 5, "name": "Emma", "program": "Computer Programming", "gpa": 3.5},
+    {"_id": 6, "name": "Oliver", "program": "Software Dev", "gpa": 3.1},
+    {"_id": 7, "name": "Sophia", "program": "Data Analytics", "gpa": 3.8},
+    {"_id": 8, "name": "Elijah", "program": "Computer Programming", "gpa": 2.9},
+    {"_id": 9, "name": "Isabella", "program": "Software Dev", "gpa": 3.6},
+    {"_id": 10, "name": "Lucas", "program": "Data Analytics", "gpa": 3.3},
+    {"_id": 11, "name": "Mia", "program": "Computer Programming", "gpa": 3.4},
+    {"_id": 12, "name": "Ethan", "program": "Software Dev", "gpa": 2.7},
+    {"_id": 13, "name": "Charlotte", "program": "Data Analytics", "gpa": 3.9},
+    {"_id": 14, "name": "James", "program": "Computer Programming", "gpa": 3.0},
+    {"_id": 15, "name": "Amelia", "program": "Software Dev", "gpa": 3.8},
+    {"_id": 16, "name": "Benjamin", "program": "Data Analytics", "gpa": 3.1},
+    {"_id": 17, "name": "Harper", "program": "Computer Programming", "gpa": 3.6},
+    {"_id": 18, "name": "Henry", "program": "Software Dev", "gpa": 2.5},
+    {"_id": 19, "name": "Evelyn", "program": "Data Analytics", "gpa": 3.7},
+    {"_id": 20, "name": "Alexander", "program": "Computer Programming", "gpa": 3.2}
+    ]
+    
+    #students.insert_many(students_data)
+
+
+    # READ one document
+    for student in students.find({"gpa": {"$gte": 3.5}}):
+        print(student["name"], student["gpa"])
+
+    #print("Returning selected fields")
+    #students_col = students.find(
+    #    {}, 
+    #    {"_id": 0, "name": 1}
+    #)
+    
+    #print(type(students_col))
+
+    #for s in students_col:
+    #    print(s)
+
+    
+    
+except Exception as e:
+    raise Exception(
+        "The following error occurred: ", e)
+finally:
+    client.close()
